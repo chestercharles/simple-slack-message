@@ -14,41 +14,41 @@ function main() {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      channel,
-      text: "title",
-      blocks: [
-        {
-          type: "header",
-          text: {
-            text: title,
-            type: "plain_text",
-          },
-        },
-        {
-          type: "context",
-          elements: [
-            {
-              type: "mrkdwn",
-              text: `Triggered by *${actor}*`,
-            },
-          ],
-        },
-        {
-          type: "divider",
-        },
-        {
-          type: "section",
-          text: {
-            type: "plain_text",
-            text: body,
-          },
-        },
-      ],
-    }),
   };
 
-  console.log(options);
+  const data = JSON.stringify({
+    channel,
+    text: "title",
+    blocks: [
+      {
+        type: "header",
+        text: {
+          text: title,
+          type: "plain_text",
+        },
+      },
+      {
+        type: "context",
+        elements: [
+          {
+            type: "mrkdwn",
+            text: `Triggered by *${actor}*`,
+          },
+        ],
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "section",
+        text: {
+          type: "plain_text",
+          text: body,
+        },
+      },
+    ],
+  });
+
   const req = https.request(options, (res) => {
     res.on("data", (d) => {
       process.stdout.write(d);
@@ -57,10 +57,14 @@ function main() {
       process.exit(0);
     });
   });
+
   req.on("error", (e) => {
     console.error(e);
     process.exit(1);
   });
+
+  req.write(data);
+
   req.end();
 }
 
