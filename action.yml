@@ -1,0 +1,18 @@
+name: "Simple slack message"
+description: "Github action that sends a simple slack message with a title and body"
+inputs:
+  title:
+    description: "Title of slack message"
+    required: true
+  body:
+    description: "Body of slack message"
+    required: true
+  channel:
+    description: "Channle to which to send message"
+    required: true
+  token:
+    description: "Slack message token"
+    required: true
+runs:
+  using: "node12"
+  main: "index.js"

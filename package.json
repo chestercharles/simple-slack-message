@@ -1,0 +1,19 @@
+{
+  "name": "simple-slack-message",
+  "version": "1.0.0",
+  "description": "Github action that sends a simple slack message with a title and body",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synapsestudios/simple-slack-message.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synapsestudios/simple-slack-message/issues"
+  },
+  "homepage": "https://github.com/synapsestudios/simple-slack-message#readme"
+}
